@@ -71,5 +71,22 @@ function arc(x0, y0, radius, startAng = 0, endAng = Math.PI * 2) {
 draw(arc(0, 0, 100)); // 在 (0,0) 点绘制一个半径为 100 的圆
 ```
 
-## 如何利用三角剖分和向量操作描述并处理多边形？
+## 使用三角剖分填充多边形以及判断点是否在多边形内部
 
+1. 填充任意多边形：Canvas2D 使用 ``ctx.fill()``；WebGL 使用成熟的库对多边形进行三角剖分（[Earcut](https://github.com/mapbox/earcut)、[Tess2.js](https://github.com/memononen/tess2.js)、[cdt2d](https://github.com/mikolalysenko/cdt2d)）。
+
+2. 判断点是否在多边形内部：将图形进行三角剖分后，根据点与三角形的数学关系来判断点是否在某个三角形的内部或边上。
+
+
+
+### 使用向量判断点是否在三角形内部或边上
+
+已知一个三角形的三条边分别是向量 a、b、c，平面上一点 u 连接三角形三个顶点的向量分别为 u1、u2、u3，那么 u 点在三角形内部的 [充分必要条件](https://zh.wikipedia.org/wiki/%E5%85%85%E5%88%86%E5%BF%85%E8%A6%81%E6%9D%A1%E4%BB%B6) 是：u1 X a、u2 X b、u3 X c 的符号相同。
+
+![3402b08454dbc39f9543cb4c597419c3](math-related.assets/3402b08454dbc39f9543cb4c597419c3.jpg)
+
+[论证过程](https://time.geekbang.org/column/article/258101) 没看懂，需要再细看
+
+## 如何用仿射变换对几何图形进行坐标变换？
+
+[全篇](https://time.geekbang.org/column/article/259264) 都没看懂
